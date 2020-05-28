@@ -20,7 +20,7 @@ router.get("/", function (req, res, next) {
 });
 
 
-/* GET  users/:id data*/
+/* GET  users/:id to get a user data */
 router.get("/:id", function (req, res, next) {
   client.get(`/users/${req.params.id}`, function (err, request, response, obj) {
     assert.ifError(err);
@@ -28,6 +28,16 @@ router.get("/:id", function (req, res, next) {
     res.json(obj);
   });
 });
+
+/* PUT users/:id to update a user data*/ 
+router.put("/:id", function (req, res, next) {
+  client.put(`/users/${req.params.id}`, req.body, function (err, request, response, obj) {
+    assert.ifError(err);
+
+    res.json(obj);
+  });
+});
+
 
 
 
