@@ -19,7 +19,6 @@ router.get("/", function (req, res, next) {
   });
 });
 
-
 /* GET  users/:id to get a user data */
 router.get("/:id", function (req, res, next) {
   client.get(`/users/${req.params.id}`, function (err, request, response, obj) {
@@ -29,16 +28,36 @@ router.get("/:id", function (req, res, next) {
   });
 });
 
-/* PUT users/:id to update a user data*/ 
+/* PUT users/:id to update a user data*/
 router.put("/:id", function (req, res, next) {
-  client.put(`/users/${req.params.id}`, req.body, function (err, request, response, obj) {
+  client.put(`/users/${req.params.id}`, req.body, function (
+    err,
+    request,
+    response,
+    obj
+  ) {
     assert.ifError(err);
 
     res.json(obj);
   });
 });
 
+/* DELETE users/:id to delete a user*/
+router.delete("/:id", function (req, res, next) {
+  client.del(`/users/${req.params.id}`, function (err, request, response, obj) {
+    assert.ifError(err);
 
+    res.json(obj);
+  });
+});
 
+/*POST users/ to add a user*/
+router.post("/", function (req, res, next) {
+  client.post("/users", req.body, function (err, request, response, obj) {
+    assert.ifError(err);
+
+    res.json(obj);
+  });
+});
 
 module.exports = router;
