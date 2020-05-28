@@ -1,0 +1,11 @@
+*.js    eol=lf
+*.jsx   eol=lf
+*.json  eol=lf
+
+* linguist-vendored
+*.js  linguist-vendored=false
+
+*.css linguist-detectable=false
+*.js linguist-detectable=true
+*.html linguist-detectable=false
+
