@@ -14,19 +14,21 @@ router.get("/", function (req, res, next) {
   client.get("/users", function (err, request, response, obj) {
     assert.ifError(err);
 
-    res.end(JSON.stringify(obj, null, 2));
+    //res.end(JSON.stringify(obj, null, 2));
+    res.json(obj);
   });
 });
 
 
-/* GET :id user data */
+/* GET  users/:id data*/
 router.get("/:id", function (req, res, next) {
   client.get(`/users/${req.params.id}`, function (err, request, response, obj) {
     assert.ifError(err);
 
-    res.end(JSON.stringify(obj, null, 2));
+    res.json(obj);
   });
 });
+
 
 
 module.exports = router;
