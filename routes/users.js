@@ -18,4 +18,15 @@ router.get("/", function (req, res, next) {
   });
 });
 
+
+/* GET :id user data */
+router.get("/:id", function (req, res, next) {
+  client.get(`/users/${req.params.id}`, function (err, request, response, obj) {
+    assert.ifError(err);
+
+    res.end(JSON.stringify(obj, null, 2));
+  });
+});
+
+
 module.exports = router;
